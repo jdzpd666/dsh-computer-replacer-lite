@@ -1,0 +1,73 @@
+{
+  "name": "dsh-computer-replacer",
+  "version": "0.2.0",
+  "description": "Windows desktop automation plugin for DeepSeek Harness: 14 UIA-first tools, zero-image read paths, approval-gated input, global panic hotkey.",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js",
+    "./client": "./dist/client.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "build:ts": "tsc -p tsconfig.json",
+    "build:worker": "node scripts/build-worker.mjs build",
+    "build:client": "node scripts/build-client.mjs",
+    "build": "npm run build:ts && npm run build:client && npm run build:worker",
+    "probe": "node scripts/build-worker.mjs probe",
+    "test": "npm run build:ts && npm run build:client && node --test tests/automated/*.test.mjs",
+    "test:rust": "node scripts/build-worker.mjs test",
+    "verify:m5": "node scripts/verify-m5.mjs",
+    "verify:m6": "node scripts/verify-m6.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "src",
+    "worker/src",
+    "worker/Cargo.toml",
+    "worker/Cargo.lock",
+    "worker/build.rs",
+    "cordis.patch.yml",
+    "scripts/build-worker.mjs",
+    "scripts/build-client.mjs",
+    "scripts/check-msvc.cmd",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "computer-use",
+    "desktop-automation",
+    "windows",
+    "uia",
+    "ocr",
+    "ai-agent"
+  ],
+  "author": "jdzpd666",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdzpd666/dsh-computer-replacer-lite.git"
+  },
+  "homepage": "https://github.com/jdzpd666/dsh-computer-replacer-lite#readme",
+  "bugs": {
+    "url": "https://github.com/jdzpd666/dsh-computer-replacer-lite/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3"
+  }
+}

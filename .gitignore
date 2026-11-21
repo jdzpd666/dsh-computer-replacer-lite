@@ -1,0 +1,35 @@
+# Dependencies and build dirs
+node_modules/
+worker/target/
+.build/
+.graphflow/
+.runtime/
+undefined/
+
+# Internal working documents (not part of the public release)
+HANDOFF.md
+HANDOFF.md.bak-*
+PLUGIN.md
+PLUGIN.md.bak-*
+M2-VERIFICATION.md
+M3-STEP1.md
+M4-REPORT.md
+M5-REPORT.md
+M6-REPORT.md
+watch-crash.log
+cursor_target.json
+*.log
+reports/
+procedures/
+docs/
+
+# Stale prototype brokers (never referenced by the plugin)
+dist/replacer-broker-v*.exe
+
+# Local dev leftovers
+scripts/_*
+worker/b2_*.txt
+
+# Backups
+*.bak
+*.bak-*
