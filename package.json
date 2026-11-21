@@ -34,16 +34,9 @@
   },
   "files": [
     "dist",
-    "src",
-    "worker/src",
-    "worker/Cargo.toml",
-    "worker/Cargo.lock",
-    "worker/build.rs",
     "cordis.patch.yml",
-    "scripts/build-worker.mjs",
-    "scripts/build-client.mjs",
-    "scripts/check-msvc.cmd",
-    "tsconfig.json"
+    "README.md",
+    "LICENSE"
   ],
   "keywords": [
     "dsh",

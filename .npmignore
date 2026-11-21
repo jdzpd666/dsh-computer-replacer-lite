@@ -1,0 +1,10 @@
+# Development artefacts that must never ship inside the published tarball
+*.bak
+*.bak-*
+*.log
+docs/
+HANDOFF.md
+PLUGIN.md
+reports/
+procedures/
+procedures-*
