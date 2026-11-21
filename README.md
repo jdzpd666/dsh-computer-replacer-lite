@@ -4,7 +4,7 @@
 
 **中文简介**：DSH 的 Windows 电脑操控插件（第 14 个工具 `replacer_locate` 于 0.2.0 上线）。感知走 UIA + DXGI/OCR 两条通道，**读屏路径零图像字节出 worker**；所有写操作都先弹审批卡；全局急停热键 `Ctrl+Alt+Shift+P`；动作前必须 observe，焦点一变即 fail-closed。
 
-- Version: **0.2.1** (2026-11-21)
+- Version: **0.2.2** (2026-11-21)
 - Platform: Windows 10/11 x64 (tested on Windows 11 25H2, build 26200, 125% DPI)
 - License: MIT
 
@@ -91,7 +91,7 @@ npm test                 # tsc + node --test tests/automated/*.test.mjs
 ## Safety model
 
 - **Approval before action.** Mutating tools ask every time; a denied/cancelled card produces no worker request. Read-only screen reads have a separate card that states they read all visible screen content.
-- **No permission changes.** The published plugin does not add or override DSH permission presets; approval behaviour follows the DSH preset you choose.
+- **Permission presets (read this).** `cordis.patch.yml` adds three presets to `@deepseek-ai/dsh-permission-presets`: `danger-full-access` (**the default**), `workspace-write-ask`, and `workspace-write-never`. With the default preset, new sessions run mutating tools without approval cards. Pick `workspace-write-ask` in DSH if you want the approval path above; remove the `permission` block from the patch if you do not want the presets at all.
 - **No L3 keyboard injection.** The keyboard path never uses `SendInput`/`keybd_event`; `replacer_status.l3` is always `false`. `SendInput` only exists in the `replacer_click_xy` coordinate fallback, which shows an approval card and visibly moves the pointer.
 - **Panic latch.** `Ctrl+Alt+Shift+P` (global hotkey) or the in-UI panic button latches a stop. Injection is cut; read-only tools such as `replacer_read_screen`/`replacer_locate` continue to work by design.
 - **Zero-image contract.** Screen-reading responses are validated against a strict whitelist; any extra field (including images) fails the call.
