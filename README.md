@@ -61,7 +61,11 @@ When the model writes an exact control name as `<C:Control Name>` or a known UIA
 
 The plugin ships **prebuilt** (`dist/index.js`, `dist/client.js`, `dist/replacer-worker.exe`), so no build step is required.
 
-1. **From the DSH plugin market** (listing pending) — search for “computer replacer” and install with one click.
+1. **From the DSH plugin market** — listed under *tools*: [jdzpd666/dsh-computer-replacer-lite](https://awesome-dsh-plugin.com/p/jdzpd666/dsh-computer-replacer-lite/). Search “computer replacer”, or install it directly:
+
+   ```bash
+   dsh plugin --profile web add github:jdzpd666/dsh-computer-replacer-lite
+   ```
 2. **From this repository** — add the package to your DSH profile as a dependency named `dsh-computer-replacer` (the package name is intentionally not “-lite”, so existing installs keep working), add it to the profile's `bundles`, and restart DSH. For a local checkout:
 
 ```json
